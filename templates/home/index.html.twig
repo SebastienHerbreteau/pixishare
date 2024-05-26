@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('home_css') }}
+{% endblock %}
+
+{% block body %}
+    <img class="background" src="{{ asset('images/home/background.jpg') }}">
+    <div class="content"><button class="connexion"><img src="{{ asset('images/home/cadenas.png') }}"> Connexion</button></div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('home_js') }}
+{% endblock %}
