@@ -9,8 +9,13 @@
 {% block body %}
     <img class="background" src="{{ asset('images/home/background.jpg') }}">
     <div class="content">
-        <a href="{{ path('login') }}" class="connection"><img src="{{ asset('images/home/cadenas.png') }}"> Connexion</a>
+        {% if app.user %}
+            <a href="{{ path('gallery') }}" class="gallery"><img src="{{ asset('images/home/photo.png') }}"> Galerie</a>
+        {% else %}
+            <a href="{{ path('login') }}" class="connection"><img src="{{ asset('images/home/cadenas.png') }}"> Connexion</a>
+        {% endif %}
     </div>
+
 {% endblock %}
 
 {% block javascripts %}

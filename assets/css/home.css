@@ -17,7 +17,7 @@ body {
     margin-top: 8%;
 }
 
-.connection {
+.connection, .gallery {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,7 +33,7 @@ body {
     text-decoration: none;
 }
 
-.connection>img {
+.connection>img, .gallery>img {
     width:20px;
     height:20px;
     margin-right: 5px;
