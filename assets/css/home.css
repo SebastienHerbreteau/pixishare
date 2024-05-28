@@ -17,7 +17,7 @@ body {
     margin-top: 8%;
 }
 
-.connexion {
+.connection {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,9 +30,10 @@ body {
     font-family: "Homenaje", sans-serif;
     z-index: 2;
     padding: 10px;
+    text-decoration: none;
 }
 
-.connexion>img {
+.connection>img {
     width:20px;
     height:20px;
     margin-right: 5px;
