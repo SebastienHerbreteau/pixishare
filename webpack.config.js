@@ -22,6 +22,7 @@ Encore
      */
     .addStyleEntry('home_css', './assets/css/home.css')
     .addStyleEntry('base_css', './assets/css/base.css')
+    .addStyleEntry('login_css', './assets/css/login.css')
     .addEntry('home_js', './assets/js/home.js')
 
 
