@@ -30,22 +30,22 @@ body {
     align-items: center;
 }
 
-input {
+input[type=password], input[type=email] {
     display: flex;
     width: 250px;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: transparent;
     color: white;
     font-size: 20px;
     cursor: pointer;
+    background-color: transparent;
     font-family: "Homenaje", sans-serif;
     z-index: 2;
     padding: 10px;
     text-decoration: none;
     outline: none;
-    border: none;
+    border: 2px solid white;
 }
 
 label {
@@ -69,10 +69,11 @@ label {
     border-radius: 10px;
     font-family: "Homenaje", sans-serif;
     font-size: 24px;
+    color: white;
     margin-top: 18%;
     cursor: pointer;
-    border:none;
-    background-color: white;
+    background-color: transparent;
+    border: 2px solid white;
 }
 
 form {

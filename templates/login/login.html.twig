@@ -25,11 +25,11 @@
 
             <div class="input-container">
                 <label for="username">Email</label>
-                <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="off" required autofocus>
             </div>
             <div class="input-container">
                 <label for="password">Password</label>
-                <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                <input type="password" name="_password" id="password" class="form-control" autocomplete="off" required>
             </div>
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
