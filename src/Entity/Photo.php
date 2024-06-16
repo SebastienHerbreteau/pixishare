@@ -17,13 +17,14 @@ class Photo
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $file_path = null;
+    private ?string $filePath = null;
 
-    #[ORM\Column]
-    private ?int $album = null;
+    #[ORM\ManyToOne(inversedBy: 'photos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?album $album = null;
 
-    #[ORM\Column]
-    private ?int $user = null;
+    #[ORM\ManyToOne(inversedBy: 'photos')]
+    private ?user $user = null;
 
     public function getId(): ?int
     {
@@ -44,34 +45,34 @@ class Photo
 
     public function getFilePath(): ?string
     {
-        return $this->file_path;
+        return $this->filePath;
     }
 
-    public function setFilePath(string $file_path): static
+    public function setFilePath(string $filePath): static
     {
-        $this->file_path = $file_path;
+        $this->filePath = $filePath;
 
         return $this;
     }
 
-    public function getAlbum(): ?int
+    public function getAlbum(): ?album
     {
         return $this->album;
     }
 
-    public function setAlbum(int $album): static
+    public function setAlbum(?album $album): static
     {
         $this->album = $album;
 
         return $this;
     }
 
-    public function getUser(): ?int
+    public function getUser(): ?user
     {
         return $this->user;
     }
 
-    public function setUser(int $user): static
+    public function setUser(?user $user): static
     {
         $this->user = $user;
 

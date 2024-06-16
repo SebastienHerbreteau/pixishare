@@ -6,7 +6,7 @@
     {{ encore_entry_link_tags('home_css') }}
 {% endblock %}
 {% block body %}
-    <img class="background" src="{{ asset('images/home/background.jpg') }}">
+    <img class="background" src="{{ asset('images/background.jpg') }}">
     <div class="content">
         {% if app.user %}
             <a href="{{ path('gallery') }}" class="gallery"><img src="{{ asset('images/home/photo.png') }}"> Gallery</a>

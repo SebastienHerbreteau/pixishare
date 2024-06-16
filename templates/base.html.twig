@@ -11,13 +11,12 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('base_css') }}
     {% endblock %}
-
     {% block javascripts %}
     {% endblock %}
 </head>
 <body>
 
-<img class="background" src="{{ asset('images/home/background.jpg') }}">
+
 {% if app.user %}
     <a href="{{ path('logout') }}" class="logout">Logout</a>
 {% endif %}
