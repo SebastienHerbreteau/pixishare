@@ -31,17 +31,17 @@ body {
     z-index: 2;
     padding: 10px;
     text-decoration: none;
-}
 
-.connection:hover, .gallery:hover {
-    transform: scale(1.03);
-    transition: 0.5s ease;
-}
+    &:hover {
+        transform: scale(1.03);
+        transition: 0.5s ease;
+    }
 
-.connection > img, .gallery > img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+    img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
 }
 
 .background {
@@ -50,6 +50,26 @@ body {
     left: 50%;
     transform: translate(-50%, -50%); /* Centre l'image */
     max-width: 100%; /* Assure que l'image couvre au moins 100% de la largeur du viewport */
+}
+
+.logout {
+    z-index: 3;
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    font-family: "Homenaje", sans-serif;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 

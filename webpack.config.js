@@ -14,15 +14,18 @@ Encore
     // only needed for CDN's or subdirectory deploy
     //.setManifestKeyPrefix('build/')
 
+    // processes files ending in .scss or .sass
+    .enableSassLoader()
+
     /*
      * ENTRY CONFIG
      *
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addStyleEntry('home_css', './assets/css/home.css')
-    .addStyleEntry('base_css', './assets/css/base.css')
-    .addStyleEntry('login_css', './assets/css/login.css')
+    .addStyleEntry('home_css', './assets/css/home.scss')
+    .addStyleEntry('base_css', './assets/css/base.scss')
+    .addStyleEntry('login_css', './assets/css/login.scss')
     .addEntry('home_js', './assets/js/home.js')
 
 

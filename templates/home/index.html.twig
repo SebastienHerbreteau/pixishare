@@ -5,19 +5,16 @@
 {% block stylesheets %}
     {{ encore_entry_link_tags('home_css') }}
 {% endblock %}
-
 {% block body %}
     <img class="background" src="{{ asset('images/home/background.jpg') }}">
     <div class="content">
         {% if app.user %}
-            <a href="{{ path('gallery') }}" class="gallery"><img src="{{ asset('images/home/photo.png') }}"> Galerie</a>
+            <a href="{{ path('gallery') }}" class="gallery"><img src="{{ asset('images/home/photo.png') }}"> Gallery</a>
         {% else %}
-            <a href="{{ path('login') }}" class="connection"><img src="{{ asset('images/home/cadenas.png') }}"> Connexion</a>
+            <a href="{{ path('login') }}" class="connection"><img src="{{ asset('images/home/cadenas.png') }}"> Login</a>
         {% endif %}
     </div>
-
 {% endblock %}
-
 {% block javascripts %}
     {{ encore_entry_script_tags('home_js') }}
 {% endblock %}

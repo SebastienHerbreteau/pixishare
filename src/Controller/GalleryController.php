@@ -11,7 +11,6 @@ class GalleryController extends AbstractController
 {
     #[Route('/gallery', name: 'gallery')]
     #[IsGranted('ROLE_USER')]
-    #[IsGranted('ROLE_ADMIN')]
     public function index(): Response
     {
         return $this->render('gallery/index.html.twig', [
