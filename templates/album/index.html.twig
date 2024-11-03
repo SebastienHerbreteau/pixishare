@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma galerie{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('gallery_css') }}
+{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <a href="{{ path('gallery') }}">
+        <img class="arrow-left" src="{{ asset('images/login/arrow-left.png') }}">
+    </a>
+    <h1 class="text-center mt-5">{{ album.name }}</h1>
+    <div class="content">
+        <div class="album">
+            <a class="container-photo container-plus upload" href="{{ path('gallery_upload') }}">
+                <img class="plus" src="{{ asset('images/gallery/plus.png') }}" alt="plus icon">
+            </a>
+        </div>
+        {% for photo in album.photos %}
+            <img src="{{ asset(photo.filePath) }}">
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

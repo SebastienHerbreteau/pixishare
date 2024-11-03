@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AlbumRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AlbumRepository::class)]
@@ -35,6 +36,12 @@ class Album
 
     #[ORM\ManyToOne(inversedBy: 'albums')]
     private ?user $user = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_taken = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?photo $cover = null;
 
     public function __construct()
     {
@@ -94,6 +101,11 @@ class Album
         return $this;
     }
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     /**
      * @return Collection<int, Photo>
      */
@@ -132,6 +144,30 @@ class Album
     public function setUser(?user $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDateTaken(): ?\DateTimeInterface
+    {
+        return $this->date_taken;
+    }
+
+    public function setDateTaken(\DateTimeInterface $date_taken): static
+    {
+        $this->date_taken = $date_taken;
+
+        return $this;
+    }
+
+    public function getCover(): ?photo
+    {
+        return $this->cover;
+    }
+
+    public function setCover(?photo $cover): static
+    {
+        $this->cover = $cover;
 
         return $this;
     }

@@ -7,6 +7,7 @@ body {
 
 .content {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
     padding: 120px 50px 50px 50px;
@@ -16,8 +17,10 @@ body {
     z-index: 2;
     filter: none;
     width: 50px;
+    height: 50px;
     position: absolute;
-    top: 10%;
+    top: 50px;
+    left: 50px;
     cursor: pointer;
     transform: translate(-50%, -50%);
 }
@@ -45,56 +48,49 @@ body {
 .album {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 }
 
-p, h3 {
+p, h2 {
     text-align: center;
 }
 
-.container-photo {
+.container-photo, .add-cover {
     overflow: hidden;
-    width: 250px;
+    width: 240px;
     height: 300px;
     border-radius: 5px;
     position: relative;
-    &:hover{
-        img:nth-child(2){
-            transform: translateX(300px);
-            transition: ease-in-out 2s;
-        }
-        img:nth-child(3){
-            transform: translateX(300px);
-            transition: ease-in-out 1s;
-        }
+    border: 1px solid white;
+}
 
-    }
+.add-cover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.container-plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus {
+    transform: scale(15%);
 }
 
 img {
     height: 300px;
-    position: absolute;
-    cursor:pointer;
-    transition:ease 1s;
+    cursor: pointer;
+    transition: ease 1s;
     box-shadow: -4px -4px 30px #000000;
     border-radius: 5px;
 }
 
-.upload {
-    z-index: 3;
-    width: 100px;
-    height: 35px;
-    border-radius: 10px;
-    font-family: "Homenaje", sans-serif;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    background-color: transparent;
-    border: 2px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+.alert {
     position: absolute;
     top: 10px;
     left: 10px;
 }
+

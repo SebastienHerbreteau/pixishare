@@ -27,6 +27,7 @@ Encore
     .addStyleEntry('base_css', './assets/css/base.scss')
     .addStyleEntry('login_css', './assets/css/login.scss')
     .addStyleEntry('gallery_css', './assets/css/gallery.scss')
+
     .addEntry('home_js', './assets/js/home.js')
     .addEntry('gallery_js', './assets/js/gallery.js')
 

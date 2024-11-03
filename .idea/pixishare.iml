@@ -138,6 +138,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfonycasts/verify-email-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/stimulus-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/ux-turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/gif" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php81" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

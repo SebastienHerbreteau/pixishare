@@ -14,9 +14,6 @@ class Photo
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $filePath = null;
 
     #[ORM\ManyToOne(inversedBy: 'photos')]
@@ -29,18 +26,6 @@ class Photo
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getFilePath(): ?string
