@@ -10,7 +10,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AlbumRepository;
 use Symfony\Bundle\SecurityBundle\Security;
 
-
 class UploadFilesHandler
 {
     private EntityManagerInterface $em;

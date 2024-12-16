@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UploadType;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +12,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\SecurityBundle\Security;
 use App\Repository\AlbumRepository;
 use App\Handler\UploadFilesHandler;
-use function PHPUnit\Framework\throwException;
 
 class GalleryController extends AbstractController
 {
@@ -24,13 +24,21 @@ class GalleryController extends AbstractController
         $this->albumRepository    = $albumRepository;
     }
 
+    /**
+     * @param Security $security
+     * @return Response
+     */
     #[Route('/gallery', name: 'gallery')]
     #[IsGranted('ROLE_USER')]
-    public function index(Security $security, AlbumRepository $albumRepository): Response
+    public function index(Security $security): Response
     {
+        /**
+         * @var User $user
+         */
+        $user = $security->getUser();
         return $this->render('gallery/index.html.twig', [
             'controller_name' => 'GalleryController',
-            'albums'          => $albumRepository->findBy(['user' => $security->getUser()->getId()])
+            'albums'          => $this->albumRepository->findBy(['user' => $user->getId()])
         ]);
     }
 
@@ -54,21 +62,5 @@ class GalleryController extends AbstractController
         return $this->render('upload/index.html.twig', [
             'form' => $form,
         ]);
-    }
-
-    #[Route('/gallery/album/{id}', name: 'album')]
-    #[IsGranted('ROLE_USER')]
-    public function getAlbum(int $id): Response
-    {
-        $album = $this->albumRepository->find($id);
-
-        if ($album->getUser()->getId() === $this->getUser()->getId()) {
-            return $this->render('album/index.html.twig', [
-                'album' => $album,
-            ]);
-        } else {
-            $this->addFlash('error', 'Vous n\'êtes pas autorisé à accéder à cet album.');
-            return $this->redirectToRoute('gallery'); // Redirige vers une autre page, par ex. la liste des albums
-        }
     }
 }

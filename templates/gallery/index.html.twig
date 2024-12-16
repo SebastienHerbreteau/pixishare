@@ -16,31 +16,23 @@
 
     <div class="content">
         {% for album in albums %}
-            {% if album.cover.filepath is defined %}
-                <div class="album">
-                    <h2>{{ album.name | capitalize }}</h2>
-                    <p>{{ album.description }}</p>
-                    <div>
-                        <a href="{{ path('album', { 'id': album.id }) }}">
-                            <img src="{{ asset(album.cover.filepath) }}">
-                        </a>
-                    </div>
-                </div>
-            {% else %}
-                <div class="album">
-                    <h2>{{ album.name | capitalize }}</h2>
-                    <p>{{ album.description }}</p>
+            <div class="album">
+                <h2>{{ album.name | capitalize }}</h2>
+                <p>{{ album.description }}</p>
+                <div class="container-photo">
                     <a href="{{ path('album', { 'id': album.id }) }}">
-                    <div class="add-cover">
-                            <p>Ajouter une couverture</p>
-                    </div>
+                        {% if album.cover.filepath is defined %}
+                            <img src="{{ asset(album.cover.filepath) }}">
+                        {% else %}
+                            <img class="gallery-icon" src="{{ asset('images/galerie.png') }}">
+                        {% endif %}
                     </a>
                 </div>
-            {% endif %}
+            </div>
         {% endfor %}
         <div class="album">
             <a class="container-photo container-plus upload" href="{{ path('gallery_upload') }}">
-                <img class="plus" src="{{ asset('images/gallery/plus.png') }}" alt="plus icon">
+                <img class="plus" src="{{ asset('images/plus.png') }}" alt="plus icon">
             </a>
         </div>
     </div>
