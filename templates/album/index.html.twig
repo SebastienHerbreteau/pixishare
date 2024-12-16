@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Ma galerie{% endblock %}
 
 {% block stylesheets %}
@@ -23,9 +22,13 @@
             </a>
         </div>
         {% for photo in album.photos %}
-            <img src="{{ asset(photo.filePath) }}">
+            <img class="image" data-id="{{ photo.id }}" src="{{ asset(photo.filePath) }}">
         {% endfor %}
     </div>
+    <div class="modal"></div>
+{% endblock %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('album_js') }}
 {% endblock %}
 

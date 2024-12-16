@@ -41,6 +41,4 @@ class AlbumController extends AbstractController
             return $this->redirectToRoute('gallery');
         }
     }
-
-
 }

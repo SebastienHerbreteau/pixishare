@@ -1,98 +1,98 @@
 body {
-    margin: 0;
-    background: black;
-    color: white;
-    font-family: "Homenaje", sans-serif;
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: "Homenaje", sans-serif;
 }
 
 .content {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 120px 50px 50px 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 120px 50px 50px 50px;
 }
 
 .arrow-left {
-    z-index: 2;
-    filter: none;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    cursor: pointer;
-    transform: translate(-50%, -50%);
+  z-index: 2;
+  filter: none;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
 }
 
 .logout {
-    z-index: 2;
-    width: 100px;
-    height: 35px;
-    border-radius: 10px;
-    font-family: "Homenaje", sans-serif;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    background-color: transparent;
-    border: 2px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  z-index: 2;
+  width: 100px;
+  height: 35px;
+  border-radius: 10px;
+  font-family: "Homenaje", sans-serif;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .album {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 p, h2 {
-    text-align: center;
+  text-align: center;
 }
 
-.container-photo{
-    overflow: hidden;
-    width: 240px;
-    height: 300px;
-    border-radius: 5px;
-    position: relative;
-    border: 1px solid white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container-photo {
+  overflow: hidden;
+  width: 240px;
+  height: 300px;
+  border-radius: 5px;
+  position: relative;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-plus {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .plus {
-    transform: scale(15%);
+  transform: scale(15%);
 }
 
 img {
-    height: 300px;
-    cursor: pointer;
-    transition: ease 1s;
-    //box-shadow: -4px -4px 30px #000000;
-    //border-radius: 5px;
+  height: 300px;
+  cursor: pointer;
+  transition: ease 1s;
+  //box-shadow: -4px -4px 30px #000000;
+  //border-radius: 5px;
 }
 
 .alert {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .gallery-icon {
-width: 120px;
-    height: 120px;
+  width: 120px;
+  height: 120px;
 }
 
