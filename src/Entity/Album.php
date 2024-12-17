@@ -35,7 +35,7 @@ class Album
     private Collection $photos;
 
     #[ORM\ManyToOne(inversedBy: 'albums')]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_taken = null;
@@ -136,12 +136,12 @@ class Album
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 

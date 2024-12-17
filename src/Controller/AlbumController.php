@@ -4,24 +4,30 @@ namespace App\Controller;
 
 use App\Repository\AlbumRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\SecurityBundle\Security;
 use App\Entity\User;
+use App\Repository\PhotoRepository;
 
+#[Route('/gallery/album', name: 'album')]
 class AlbumController extends AbstractController
 {
     private AlbumRepository $albumRepository;
-    private Security        $security;
+    private PhotoRepository $photoRepository;
+    private Security $security;
 
-    public function __construct(AlbumRepository $albumRepository, Security $security)
+    public function __construct(AlbumRepository $albumRepository, Security $security, PhotoRepository $photoRepository)
     {
         $this->albumRepository = $albumRepository;
-        $this->security        = $security;
+        $this->photoRepository = $photoRepository;
+        $this->security = $security;
     }
 
-    #[Route('/gallery/album/{id}', name: 'album')]
+    #[Route('/{id}', name: 'album')]
     #[IsGranted('ROLE_USER')]
     public function getAlbum(int $id): Response
     {
@@ -41,4 +47,13 @@ class AlbumController extends AbstractController
             return $this->redirectToRoute('gallery');
         }
     }
+
+    #[Route('/photo/{id}', name: 'photo')]
+    public function getImage(int $id, Request $request): Response
+    {
+        return $this->render('album/photo.html.twig', [
+            'photo' => $this->photoRepository->find($id),
+        ]);
+    }
+
 }

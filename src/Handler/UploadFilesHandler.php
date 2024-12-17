@@ -85,7 +85,7 @@ class UploadFilesHandler
         //On crée le nouveau numéro de la photo
         $imageNumber = count($this->albumRepository->find($album->getId())->getPhotos()) + 1;
 
-        //Ajoute un zéro devant les chiffres
+        //Ajoute un zéro devant les numéros
         $formatNumber = sprintf('%02d', $imageNumber);
 
         //Créer le nom de l'image

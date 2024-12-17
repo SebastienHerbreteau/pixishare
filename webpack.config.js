@@ -27,10 +27,12 @@ Encore
     .addStyleEntry('base_css', './assets/css/base.scss')
     .addStyleEntry('login_css', './assets/css/login.scss')
     .addStyleEntry('gallery_css', './assets/css/gallery.scss')
+    .addStyleEntry('photo_css', './assets/css/photo.scss')
 
     .addEntry('home_js', './assets/js/home.js')
     .addEntry('gallery_js', './assets/js/gallery.js')
     .addEntry('album_js', './assets/js/album.js')
+    .addEntry('photo_js', './assets/js/photo.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

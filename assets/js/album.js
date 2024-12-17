@@ -1,7 +1,11 @@
-let images = document.querySelectorAll('.image')
+let photos = document.querySelectorAll('.photo')
 let modal = document.querySelector('.modal')
-images.forEach(image => {
-    image.addEventListener('click', function () {
+
+photos.forEach(photo => {
+    photo.addEventListener('click', function () {
+        let id = photo.dataset.id
+        fetch('/gallery/album/photo/' + id)
+            .then(response => console.log(response))
 
     })
 })
