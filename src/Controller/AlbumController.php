@@ -13,7 +13,6 @@ use Symfony\Bundle\SecurityBundle\Security;
 use App\Entity\User;
 use App\Repository\PhotoRepository;
 
-#[Route('/gallery/album', name: 'album')]
 class AlbumController extends AbstractController
 {
     private AlbumRepository $albumRepository;
@@ -27,7 +26,7 @@ class AlbumController extends AbstractController
         $this->security = $security;
     }
 
-    #[Route('/{id}', name: 'album')]
+    #[Route('/gallery/album/{id}', name: 'album')]
     #[IsGranted('ROLE_USER')]
     public function getAlbum(int $id): Response
     {
@@ -48,7 +47,7 @@ class AlbumController extends AbstractController
         }
     }
 
-    #[Route('/photo/{id}', name: 'photo')]
+    #[Route('/gallery/album/photo/{id}', name: 'photo')]
     public function getImage(int $id, Request $request): Response
     {
         return $this->render('album/photo.html.twig', [
