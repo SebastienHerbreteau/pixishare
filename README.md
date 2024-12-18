@@ -1,5 +1,6 @@
 ![alt text](https://github.com/SebastienHerbreteau/pixishare/blob/master/screenshot.jpg?raw=true)
 
+- gestion erreur en cas de fail de l'upload
 - affichage album façon flickr
 - slide gauche/droite sur modal
 - bouton fermer sur modal
