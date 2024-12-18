@@ -2,13 +2,13 @@
 
 - gestion erreur en cas de fail de l'upload
 - affichage album façon flickr - Fab
-- slide gauche/droite sur modal - Seb
-- bouton fermer sur modal - Seb
+- slide gauche/droite sur modal
+- bouton fermer sur modal
 - faire design page upload, régler la date, proposer parametrage d'encodage des photos
 - validation inscription par mail
 - notifications
 - permettre la suppression des images
 - navbar ?
 - PWA ?
-- minaitures ?
+- minaitures - Seb
 - 2FA
