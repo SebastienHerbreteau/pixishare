@@ -10,5 +10,5 @@
 - permettre la suppression des images
 - navbar ?
 - PWA ?
-- minaitures - Seb
+- miniatures - Seb
 - 2FA
