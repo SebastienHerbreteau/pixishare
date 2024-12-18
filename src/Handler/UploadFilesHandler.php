@@ -92,7 +92,7 @@ class UploadFilesHandler
         $newImageName = $formatNumber . '.webp';
 
         //On sauvegarde l'image
-        $imageEncoded->save($dir . '\\' . $newImageName);
+        $imageEncoded->save($dir . '/' . $newImageName);
 
         $imageIntervention = null;
 
