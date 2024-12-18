@@ -15,15 +15,33 @@
         <img class="arrow-left" src="{{ asset('images/login/arrow-left.png') }}">
     </a>
     <h1 class="text-center mt-5">{{ album.name }}</h1>
+
+    <div class="album-container">
+        <!-- Grille des images -->
+        <div class="photo-grid">
+            <!-- Ajoute d'autres images ici -->
+            {% for photo in album.photos %}
+                <a href="https://google.com" class="photo" data-caption="test {{ loop.index }}">
+                    <img class="photo-album" data-id="{{ photo.id }}" src="{{ asset(photo.filePath) }}">
+                </a>
+            {% endfor %}
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox">
+            <span class="close-btn">&times;</span>
+            <img src="" alt="Large Photo" class="lightbox-content">
+            <div class="caption"></div>
+        </div>
+    </div>
+
+
     <div class="content">
         <div class="album">
             <a class="container-photo container-plus upload" href="{{ path('gallery_upload') }}">
                 <img class="plus" src="{{ asset('images/plus.png') }}" alt="plus icon">
             </a>
         </div>
-        {% for photo in album.photos %}
-            <img class="photo-album" data-id="{{ photo.id }}" src="{{ asset(photo.filePath) }}">
-        {% endfor %}
     </div>
     <div class="modal"></div>
 {% endblock %}
