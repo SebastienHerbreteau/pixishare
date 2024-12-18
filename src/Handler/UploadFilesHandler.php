@@ -96,7 +96,7 @@ class UploadFilesHandler
 
         $imageIntervention = null;
 
-        $photo->setFilePath('images\gallery\\' . $album->getId() . '\\' . $newImageName);
+        $photo->setFilePath('images/gallery/' . $album->getId() . '/' . $newImageName);
         $photo->setAlbum($this->albumRepository->find($album->getId()));
         $photo->setUser($this->security->getUser());
         $this->em->persist($photo);
