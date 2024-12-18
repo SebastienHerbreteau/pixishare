@@ -22,7 +22,7 @@
             </a>
         </div>
         {% for photo in album.photos %}
-            <img class="photo-album" data-id="{{ photo.id }}" src="{{ asset(photo.filePath) }}">
+            <img class="photo-album" data-id="{{ photo.id }}" src="{{ asset(photo.thumbnail) }}">
         {% endfor %}
     </div>
     <div class="modal"></div>

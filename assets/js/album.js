@@ -9,6 +9,5 @@ photos.forEach(photo => {
                 modal.innerHTML = content
                 modal.style.display = 'flex'
             }))
-
     })
 })
