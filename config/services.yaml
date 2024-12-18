@@ -24,3 +24,4 @@ services:
     App\Handler\UploadFilesHandler:
       arguments:
         $galleryDirectory: '%kernel.project_dir%/public/images/gallery/'
+        $projectDir: '%kernel.project_dir%'
