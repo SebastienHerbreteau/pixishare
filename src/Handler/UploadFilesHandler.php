@@ -95,7 +95,7 @@ class UploadFilesHandler
 
         // Appel du script Python
         $command = 'python ' . escapeshellarg($this->projectDir . '/script/image_processor.py') .' ' .
-            escapeshellarg($inputPath) . ' ' . escapeshellarg($outputPath) . ' ' . escapeshellarg($thumbnailPath);
+            escapeshellarg($inputPath) . ' ' . escapeshellarg($outputPath) . ' ' . escapeshellarg($thumbnailPath) . ' 2048';
 
         exec($command, $output, $returnVar);
 
