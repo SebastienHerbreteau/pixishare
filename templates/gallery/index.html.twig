@@ -19,7 +19,7 @@
             <div class="album">
                 <h2>{{ album.name | capitalize }}</h2>
                 <p>{{ album.description }}</p>
-                <div class="container-photo">
+                <div class="container-album">
                     <a href="{{ path('album', { 'id': album.id }) }}">
                         {% if album.cover.filepath is defined %}
                             <img src="{{ asset(album.cover.filepath) }}">

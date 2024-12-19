@@ -23,6 +23,9 @@ class Photo
     #[ORM\ManyToOne(inversedBy: 'photos')]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $thumbnail = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Photo
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(string $thumbnail): static
+    {
+        $this->thumbnail = $thumbnail;
 
         return $this;
     }

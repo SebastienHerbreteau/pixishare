@@ -1,41 +1,15 @@
-// script.js
+import 'justifiedGallery/dist/css/justifiedGallery.css';
+import 'justifiedGallery/dist/js/jquery.justifiedGallery.js';
 
-// Sélectionne tous les éléments de type photo
-const photos = document.querySelectorAll('.photo');
-const lightbox = document.querySelector('.lightbox');
-const lightboxContent = document.querySelector('.lightbox-content');
-const closeBtn = document.querySelector('.close-btn');
-const caption = document.querySelector('.caption');
-
-// Ouvrir la lightbox avec l'image cliquée
-photos.forEach(photo => {
-    photo.addEventListener('click', function(event) {
-        event.preventDefault(); // Empêche le comportement par défaut du lien
-
-        const largeImageUrl = this.getAttribute('href'); // L'URL de l'image en grande taille
-        const imageCaption = this.getAttribute('data-caption'); // La légende de l'image
-
-        lightboxContent.src = largeImageUrl; // Charge l'image dans la lightbox
-        caption.textContent = imageCaption; // Affiche la légende dans la lightbox
-        lightbox.style.display = 'flex'; // Affiche la lightbox
-    });
-});
-
-// Fermer la lightbox
-closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-});
-
-// Fermer la lightbox en cliquant en dehors de l'image
-lightbox.addEventListener('click', (event) => {
-    if (event.target === lightbox) {
-        lightbox.style.display = 'none';
-    }
-});
-
-
-/*let photos = document.querySelectorAll('.photo-album')
+let photos = document.querySelectorAll('.photo')
 let modal = document.querySelector('.modal')
+
+$('.content').justifiedGallery({
+    rowHeight : 200,
+    lastRow : 'left',
+    margins : 5,
+    border: 150
+});
 
 photos.forEach(photo => {
     photo.addEventListener('click', function () {
@@ -44,7 +18,8 @@ photos.forEach(photo => {
             .then(response => response.text().then(function(content) {
                 modal.innerHTML = content
                 modal.style.display = 'flex'
+                modal.addEventListener('click', () => modal.style.display = 'none')
             }))
-
     })
-})*/
+})
+

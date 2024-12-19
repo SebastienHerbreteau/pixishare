@@ -7,6 +7,8 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
+
+    .autoProvidejQuery()
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
@@ -27,7 +29,9 @@ Encore
     .addStyleEntry('base_css', './assets/css/base.scss')
     .addStyleEntry('login_css', './assets/css/login.scss')
     .addStyleEntry('gallery_css', './assets/css/gallery.scss')
-    .addStyleEntry('photo_css', './assets/css/photo.scss')
+    .addStyleEntry('modal_css', './assets/css/modal.scss')
+    .addStyleEntry('album_css', './assets/css/album.scss')
+    .addStyleEntry('justifiedGallery_css', './assets/css/justifiedGallery.css')
 
     .addEntry('home_js', './assets/js/home.js')
     .addEntry('gallery_js', './assets/js/gallery.js')
