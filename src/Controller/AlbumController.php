@@ -49,7 +49,7 @@ class AlbumController extends AbstractController
     #[Route('/gallery/album/photo/{id}', name: 'photo')]
     public function getImage(int $id): Response
     {
-        return $this->render('album/photo.html.twig', [
+        return $this->render('album/modal.html.twig', [
             'photo' => $this->photoRepository->find($id),
         ]);
     }
