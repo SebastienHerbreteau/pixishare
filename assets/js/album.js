@@ -8,6 +8,7 @@ photos.forEach(photo => {
             .then(response => response.text().then(function(content) {
                 modal.innerHTML = content
                 modal.style.display = 'flex'
+                modal.addEventListener('click', () => modal.style.display = 'none')
             }))
     })
 })

@@ -19,7 +19,7 @@
 <body>
 
 {% if app.user %}
-    <a href="{{ path('logout') }}" class="logout">Logout</a>
+    <a href="{{ path('logout') }}" class="logout">Se déconnecter</a>
 {% endif %}
 {% block header %}
     {% include 'header.html.twig' %}
