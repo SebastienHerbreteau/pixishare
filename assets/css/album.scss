@@ -1,14 +1,3 @@
-.container-photo {
-  overflow: hidden;
-  height: 300px;
-  border-radius: 5px;
-  position: relative;
-  border: 1px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 body {
   margin: 0;
   background: black;
@@ -16,19 +5,11 @@ body {
   font-family: "Homenaje", sans-serif;
 }
 
-.content {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 120px 10px 50px 10px;
-}
-
 .upload {
   display: flex;
   justify-content: center;
   align-items: center;
- color: white;
+  color: white;
   border: 1px solid white;
   text-decoration: none;
   width: fit-content;
@@ -38,12 +19,9 @@ body {
   width: 20px;
 }
 
-.photo-album {
-  height: 300px;
+.photo {
   cursor: pointer;
-  transition: ease 1s;
-  //box-shadow: -4px -4px 30px #000000;
-  //border-radius: 5px;
+  border: none;
 }
 
 .modal {

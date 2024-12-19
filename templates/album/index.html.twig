@@ -3,6 +3,7 @@
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('album_css') }}
+    {{ encore_entry_link_tags('justifiedGallery_css') }}
 {% endblock %}
 
 {% block body %}
@@ -22,7 +23,9 @@
         </a>
         <div class="content">
             {% for photo in album.photos %}
-                <img class="photo-album" data-id="{{ photo.id }}" src="{{ asset(photo.thumbnail) }}">
+                <div>
+                    <img class="photo" data-id="{{ photo.id }}" src="{{ asset(photo.thumbnail) }}">
+                </div>
             {% endfor %}
         </div>
     </div>
