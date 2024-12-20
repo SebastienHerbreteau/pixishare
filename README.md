@@ -7,4 +7,4 @@
     - pillow  11.0.0
     - pip     24.3.1
     - rawpy   0.24.0
-- Symfony Messenger pour gérer le traitement des images en asynchone
+- Symfony Messenger pour gérer le traitement des images en asynchrone
