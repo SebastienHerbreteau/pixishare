@@ -16,7 +16,7 @@ class UploadMessageHandler
         $this->uploadFilesHandler = $uploadFilesHandler;
     }
 
-    #[NoReturn] public function __invoke(UploadMessage $message): void
+    public function __invoke(UploadMessage $message): void
     {
         $this->uploadFilesHandler->upload(
             $message->getAlbumId(),
