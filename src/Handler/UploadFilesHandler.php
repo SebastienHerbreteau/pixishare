@@ -4,9 +4,11 @@ namespace App\Handler;
 
 use App\Entity\Photo;
 use App\Entity\Album;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AlbumRepository;
 use Symfony\Bundle\SecurityBundle\Security;
+use App\Repository\UserRepository;
 
 class UploadFilesHandler
 {
@@ -15,43 +17,35 @@ class UploadFilesHandler
     private string $projectDir;
     private AlbumRepository $albumRepository;
     private Security $security;
+    private UserRepository $userRepository;
 
-    public function __construct(EntityManagerInterface $em, string $galleryDirectory, string $projectDir, AlbumRepository $albumRepository, Security $security)
+    public function __construct(EntityManagerInterface $em, string $galleryDirectory, string $projectDir, AlbumRepository $albumRepository, Security $security, UserRepository $userRepository)
     {
         $this->em = $em;
         $this->galleryDirectory = $galleryDirectory;
         $this->projectDir = $projectDir;
         $this->albumRepository = $albumRepository;
         $this->security = $security;
+        $this->userRepository = $userRepository;
     }
 
-    public function upload($form): Album
+    public function upload(?int $albumId, array $filePaths, ?\DateTimeInterface $dateTaken, ?string $newAlbumName, int $userId): Album
     {
-        $year = $form->get('date_taken')->getViewData()['year'];
-        $month = $form->get('date_taken')->getViewData()['month'];
-        $day = $form->get('date_taken')->getViewData()['day'];
-
-        $dateTaken = new \DateTime();
-        $dateTaken->setDate($year, $month, $day);
-
-        if ($form->get('album_name')->getNormData() !== null) {
-            $album = $this->albumRepository->find($form->get('album_name')->getNormData()->getId());
-            $dir = $this->galleryDirectory . $form->get('album_name')->getViewData();
-            $thumbnailDir = $dir . '/thumbnail';
+        $user = $this->userRepository->find($userId);
+        if ($albumId !== null) {
+            $album = $this->albumRepository->find($albumId);
         } else {
-            $newAlbumName = $form->get('new_album_name')->getNormData();
             $album = new Album();
-
             $album->setName($newAlbumName);
             $album->setCreatedAt(new \DateTimeImmutable());
             $album->setUpdatedAt(new \DateTimeImmutable());
             $album->setDateTaken($dateTaken);
-            $album->setUser($this->security->getUser());
+            $album->setUser($user);
             $this->em->persist($album);
             $this->em->flush();
-            $dir = $this->galleryDirectory . $album->getId();
-            $thumbnailDir = $dir . '/thumbnail';
         }
+        $dir = $this->galleryDirectory . $album->getId();
+        $thumbnailDir = $dir . '/thumbnail';
 
         if (!file_exists($dir)) {
             mkdir($dir, 0777, true);
@@ -60,13 +54,15 @@ class UploadFilesHandler
             mkdir($thumbnailDir, 0777, true);
         }
 
-        foreach ($form->get('image')->getData() as $image) {
-            switch ($image->getMimeType()) {
+        foreach ($filePaths as $filePath) {
+            // Traitement de l'image selon son type MIME
+            $mimeType = mime_content_type($filePath);
+            switch ($mimeType) {
                 case 'image/jpeg':
                 case 'image/png':
                 case 'image/CR2':
                 case 'image/bmp':
-                    $this->makeImage($image, $album, $dir, $thumbnailDir);
+                    $this->makeImage($filePath, $album, $dir, $thumbnailDir, $user);
                     break;
                 default:
                     break;
@@ -75,27 +71,26 @@ class UploadFilesHandler
         return $album;
     }
 
-    public function makeImage($image, $album, $dir, $thumbnailDir): bool
+    private function makeImage(string $filePath, Album $album, string $dir, string $thumbnailDir, User $user): bool
     {
         $photo = new Photo();
 
-        // Générer le numéro de l'image
+// Générer le numéro de l'image
         $existingFiles = glob($dir . '/*.webp'); // Liste des fichiers .webp dans le répertoire
         $imageNumber = count($existingFiles) + 1;
         $formatNumber = sprintf('%02d', $imageNumber);
 
-        // Noms des fichiers
+// Noms des fichiers
         $newImageName = $formatNumber . '.webp';
         $newThumbnailName = 'm' . $formatNumber . '.webp';
 
-        // Chemins des fichiers
-        $inputPath = $image->getPathname();  // Chemin temporaire de l'image uploadée
+// Chemins des fichiers
         $outputPath = $dir . '/' . $newImageName;
         $thumbnailPath = $thumbnailDir . '/' . $newThumbnailName;
 
-        // Appel du script Python
-        $command = 'python ' . escapeshellarg($this->projectDir . '/script/image_processor.py') .' ' .
-            escapeshellarg($inputPath) . ' ' . escapeshellarg($outputPath) . ' ' . escapeshellarg($thumbnailPath) . ' 2048';
+// Appel du script Python
+        $command = 'python ' . escapeshellarg($this->projectDir . '/script/image_processor.py') . ' ' .
+            escapeshellarg($filePath) . ' ' . escapeshellarg($outputPath) . ' ' . escapeshellarg($thumbnailPath) . ' 2048';
 
         exec($command, $output, $returnVar);
 
@@ -103,17 +98,15 @@ class UploadFilesHandler
             throw new \Exception("Erreur lors du traitement de l'image : " . implode(", ", $output));
         }
 
-        // Sauvegarder les informations dans l'entité Photo
+// Sauvegarder les informations dans l'entité Photo
         $photo->setFilePath('images/gallery/' . $album->getId() . '/' . $newImageName);
         $photo->setThumbnail('images/gallery/' . $album->getId() . '/thumbnail/' . $newThumbnailName);
         $photo->setAlbum($album);
-        $photo->setUser($this->security->getUser());
+        $photo->setUser($user);
 
         $this->em->persist($photo);
         $this->em->flush();
 
         return true;
     }
-
 }
-

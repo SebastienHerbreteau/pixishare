@@ -19,9 +19,18 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+  # Controller configuration
+    App\Controller\GalleryController:
+      arguments:
+        $galleryDirectory: '%kernel.project_dir%/public/images/gallery/'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
     App\Handler\UploadFilesHandler:
       arguments:
         $galleryDirectory: '%kernel.project_dir%/public/images/gallery/'
         $projectDir: '%kernel.project_dir%'
+
+    App\Handler\:
+        resource: '../src/Handler/UploadMessageHandler.php'
+        tags: ['messenger.message_handler']
