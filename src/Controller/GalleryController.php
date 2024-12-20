@@ -48,7 +48,7 @@ class GalleryController extends AbstractController
             $filePaths = [];
             foreach ($form->get('image')->getData() as $file) {
                 $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-                $filePath = $this->galleryDirectory . '/' . $fileName;
+                $filePath = $this->galleryDirectory . $fileName;
 
                 // Déplacer le fichier uploadé vers le répertoire permanent
                 $file->move($this->galleryDirectory, $fileName);
