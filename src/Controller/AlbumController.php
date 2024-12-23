@@ -53,5 +53,4 @@ class AlbumController extends AbstractController
             'photo' => $this->photoRepository->find($id),
         ]);
     }
-
 }
