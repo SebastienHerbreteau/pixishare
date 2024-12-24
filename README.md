@@ -87,7 +87,7 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
    npm run build
    ```
 
- 8. **Lancer les consumers ** :  
+8. **Lancer les consumers ** :  
  
    ```bash
     php bin/console messenger:consume
