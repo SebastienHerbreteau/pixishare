@@ -64,7 +64,7 @@ class GalleryController extends AbstractController
 
             $this->addFlash('success', 'Fichier(s) uploadé(s) avec succès. Le traitement se fera en arrière-plan.');
 
-            return $this->redirectToRoute('gallery');
+            return $this->redirectToRoute('album', ['id' => $albumId]);
         }
 
         return $this->render('upload/index.html.twig', [
