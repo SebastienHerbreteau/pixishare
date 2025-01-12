@@ -29,7 +29,6 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
 
 ## Fonctionnalités en cours de développement
 
-- Dockerisation du projet
 - Notifications en temps réel avec **Mercure** (SSE).
 
 ---
