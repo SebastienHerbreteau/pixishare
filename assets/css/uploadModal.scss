@@ -6,14 +6,15 @@
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-  width: 500px;
-  height: 500px;
+  width: 350px;
+  height: 400px;
 }
 
-.container-progress {
+.container {
   z-index: 3;
   display: none;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -72,6 +73,14 @@ label {
 }
 
 #upload_submit {
-border: none;
+  border: none;
   background: white;
+}
+
+.percentage {
+  display: flex;
+  justify-content: center;
+  height: 15px;
+  width: 100%;
+  margin-top: 20px;
 }

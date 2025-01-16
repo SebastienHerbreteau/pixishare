@@ -41,16 +41,20 @@
             let total = JSON.parse(event.data)['total']
             let item = JSON.parse(event.data)['item']
             let progressBar = document.querySelector('.progress-bar');
+            let percentageContainer = document.querySelector('.percentage');
             const percentage = (item / total) * 100;
             progressBar.style.width = percentage + '%';
-            progressBar.textContent = Math.round(percentage) + '%';
+            percentageContainer.innerHTML = Math.round(percentage) + '%';
             if (total === item) {
-                let progressContainer = document.querySelector('.container-progress');
+                let container = document.querySelector('.container');
                 let uploadModal = document.querySelector('.upload-modal');
                 setTimeout(function () {
-                    progressContainer.style.display = 'none';
-                    uploadModal.style.display = 'none';
-                    location.reload();
+                    container.innerHTML = 'Fichier(s) traité(s) avec succès.';
+                    setTimeout(function () {
+                        container.style.display = 'none';
+                        uploadModal.style.display = 'none';
+                        location.reload();
+                    }, 2000)
                 }, 1000)
             }
         }

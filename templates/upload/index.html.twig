@@ -2,13 +2,14 @@
         {{ encore_entry_link_tags('uploadModal_css') }}
 {% endblock %}
 {% block body %}
-        <div class="container-progress">
+        <div class="container">
                 <div class="titlebar">
                         <p class="loadingSentences">Traitement et upload des images... Merci de patienter</p>
                         <div class="progress-bar-container">
                                 <div class="progress-bar"></div>
                         </div>
                 </div>
+                <div class="percentage"></div>
         </div>
         {{ form_start(form) }}
         {{ form_end(form) }}
