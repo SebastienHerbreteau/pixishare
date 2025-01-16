@@ -1,5 +1,6 @@
 from PIL import Image
 import sys
+import os
 
 def process_image(input_path, output_path, thumbnail_path, target_size):
     try:
@@ -24,7 +25,6 @@ def process_image(input_path, output_path, thumbnail_path, target_size):
             thumbnail = resized_img.copy()
             thumbnail.thumbnail((new_width, thumbnail_height), Image.LANCZOS)
             thumbnail.save(thumbnail_path, "WEBP", quality=80, optimize=True)
-
             print("Image traitée avec succès")
     except Exception as e:
         print(f"Erreur lors du traitement de l'image : {e}")

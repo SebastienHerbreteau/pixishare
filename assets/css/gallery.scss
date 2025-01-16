@@ -1,11 +1,12 @@
 body {
   margin: 0;
-  background: black;
+
   color: white;
   font-family: "Homenaje", sans-serif;
 }
 
-.content {
+.content-gallery {
+  position: relative;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -25,60 +26,60 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.logout {
-  z-index: 2;
-  width: fit-content;
-  height: 35px;
-  border-radius: 10px;
-  font-family: "Homenaje", sans-serif;
-  font-size: 24px;
-  color: white;
-  cursor: pointer;
-  background-color: transparent;
-  border: 2px solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px;
+.album {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
-.album {
+.info-album {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 90%;
+}
+
+.album-name {
+  margin: 0;
+}
+
+.thumbnail {
+  width:300px;
+  height:300px;
+  object-fit: cover;
+}
+
+.filter {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  z-index: 2;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(255,255,255,0) 65%);
+  pointer-events: none;
 }
 
 p, h2 {
   text-align: center;
 }
 
-.container-photo {
+.container-album {
   overflow: hidden;
+  width: auto;
   height: 300px;
-  border-radius: 5px;
   position: relative;
-  border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
+  object-fit: contain;
 }
-
-.container-plus {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-}
-
-.plus {
-  transform: scale(3%);
-}
-
-
 
 .alert {
   position: absolute;
@@ -90,4 +91,6 @@ p, h2 {
   width: 120px;
   height: 120px;
 }
+
+
 

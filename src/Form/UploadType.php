@@ -23,23 +23,36 @@ class UploadType extends AbstractType
             'mapped'   => false,
             'attr'     => [
                 'accept' => 'image/*',
+                'class'   => 'widget',
             ],
         ])
                 ->add('album_name', EntityType::class, [
                     'class'       => Album::class,
-                    'label'       => "Album",
+                    'attr' => [
+                        'class'   => 'widget',
+                    ],
+                    'label'       => "Choisir un album",
                     'required'    => false,
-                    'placeholder' => 'Sélectionner un album',
                 ])
                 ->add('new_album_name', TextType::class, [
                     'required' => false,
-                    'label'    => 'Ou créer un nouvel album',
+                    'attr' => [
+                        'class'   => 'widget',
+                    ],
+                    'label'    => 'Créer un nouvel album',
                 ])
                 ->add('date_taken', DateType::class, [
-                    'label' => "Date",
+                    'attr' => [
+                        'class'   => 'widget',
+                    ],
+                    'label' => "Date de l'album",
+                    'years' => range(2000, date('Y')),
                 ])
                 ->add('submit', SubmitType::class, [
-                    'label' => 'Add Picture',
+                    'attr' => [
+                        'class'   => 'widget',
+                    ],
+                    'label' => 'Valider',
                 ]);
 
     }

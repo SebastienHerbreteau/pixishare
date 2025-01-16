@@ -1,0 +1,77 @@
+.upload-modal {
+  display: none;
+  background-color: #27936b;
+  z-index: 4;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  height: 500px;
+}
+
+.container-progress {
+  z-index: 3;
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 30%;
+  left: 50%;
+  width: 100%;
+}
+
+.progress-bar-container {
+  width: 60%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: #76c7c0;
+  text-align: center;
+  color: white;
+  line-height: 20px;
+  font-weight: bold;
+  transition: width 0.3s ease;
+}
+
+form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.widget {
+  margin-bottom: 20px;
+}
+
+label {
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+#upload_date_taken {
+  display: flex;
+}
+
+#upload_submit {
+border: none;
+  background: white;
+}

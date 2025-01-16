@@ -33,6 +33,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
     {{ encore_entry_script_tags('album_js') }}
 {% endblock %}
 

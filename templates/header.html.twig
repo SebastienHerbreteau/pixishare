@@ -1,0 +1,12 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('header_css') }}
+{% endblock %}
+
+<div class="header">
+{% if app.user %}
+    <img class="plus" src="{{ asset('images/plus.png') }}" alt="plus icon">
+    <a href="{{ path('logout') }}"><img class="logout" src="{{ asset('images/logout.png') }}" alt="logout icon"></a>
+{% endif %}
+</div>
+
+

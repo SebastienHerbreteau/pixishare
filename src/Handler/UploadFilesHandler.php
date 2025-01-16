@@ -9,6 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AlbumRepository;
 use Symfony\Bundle\SecurityBundle\Security;
 use App\Repository\UserRepository;
+use Symfony\Component\Mercure\HubInterface;
+use Symfony\Component\Mercure\Update;
 
 class UploadFilesHandler
 {
@@ -18,8 +20,9 @@ class UploadFilesHandler
     private AlbumRepository $albumRepository;
     private Security $security;
     private UserRepository $userRepository;
+    private HubInterface $hub;
 
-    public function __construct(EntityManagerInterface $em, string $galleryDirectory, string $projectDir, AlbumRepository $albumRepository, Security $security, UserRepository $userRepository)
+    public function __construct(HubInterface $hub, EntityManagerInterface $em, string $galleryDirectory, string $projectDir, AlbumRepository $albumRepository, Security $security, UserRepository $userRepository)
     {
         $this->em = $em;
         $this->galleryDirectory = $galleryDirectory;
@@ -27,6 +30,7 @@ class UploadFilesHandler
         $this->albumRepository = $albumRepository;
         $this->security = $security;
         $this->userRepository = $userRepository;
+        $this->hub = $hub;
     }
 
     public function upload(?int $albumId, array $filePaths, ?\DateTimeInterface $dateTaken, ?string $newAlbumName, int $userId): Album
@@ -54,7 +58,10 @@ class UploadFilesHandler
             mkdir($thumbnailDir, 0777, true);
         }
 
+        $item = 0;
         foreach ($filePaths as $filePath) {
+            $total = count($filePaths);
+            $item++;
             // Traitement de l'image selon son type MIME
             $mimeType = mime_content_type($filePath);
             switch ($mimeType) {
@@ -66,7 +73,13 @@ class UploadFilesHandler
                     break;
                 default:
                     break;
+
             }
+            $update = new Update(
+                '/images',
+                json_encode(['total' => $total, 'item' => $item]),
+            );
+            $this->hub->publish($update);
         }
         return $album;
     }
@@ -103,10 +116,17 @@ class UploadFilesHandler
         $photo->setThumbnail('images/gallery/' . $album->getId() . '/thumbnail/' . $newThumbnailName);
         $photo->setAlbum($album);
         $photo->setUser($user);
-
         $this->em->persist($photo);
         $this->em->flush();
+//Suppression du fichier temporaire
+        unlink($filePath);
 
+
+        if(!$album->getCover()){
+            $album->setCover($photo);
+            $this->em->persist($album);
+            $this->em->flush();
+        }
         return true;
     }
 }
