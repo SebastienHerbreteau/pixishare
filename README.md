@@ -21,8 +21,8 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
 ## Fonctionnalités actuelles
 
 - Upload de photos. (Jpeg, png, bmp)
-- Traitement asynchrone des images avec **Symfony Messenger**.
 - Script Python pour la gestion des images (redimensionnement, compression en webp).
+- Hub Mercure pour l'avancement du traitement des images
 - Affichage des galeries justifiées, façon Flickr. (https://miromannino.github.io/Justified-Gallery/)
 
 ---
