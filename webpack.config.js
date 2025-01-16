@@ -27,13 +27,14 @@ Encore
      */
     .addStyleEntry('home_css', './assets/css/home.scss')
     .addStyleEntry('base_css', './assets/css/base.scss')
+    .addStyleEntry('header_css', './assets/css/header.scss')
     .addStyleEntry('login_css', './assets/css/login.scss')
     .addStyleEntry('gallery_css', './assets/css/gallery.scss')
     .addStyleEntry('modal_css', './assets/css/modal.scss')
     .addStyleEntry('album_css', './assets/css/album.scss')
     .addStyleEntry('justifiedGallery_css', './assets/css/justifiedGallery.css')
+    .addStyleEntry('uploadModal_css', './assets/css/uploadModal.scss')
 
-    .addEntry('home_js', './assets/js/home.js')
     .addEntry('gallery_js', './assets/js/gallery.js')
     .addEntry('album_js', './assets/js/album.js')
 

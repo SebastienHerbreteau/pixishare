@@ -3,28 +3,28 @@
 namespace App\Controller;
 
 use App\Form\UploadType;
-use App\Entity\User;
-use App\Message\UploadMessage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\Messenger\MessageBusInterface;
 use App\Repository\AlbumRepository;
+use App\Handler\UploadFilesHandler;
+use Doctrine\ORM\EntityManagerInterface;
 
 class GalleryController extends AbstractController
 {
-    private $messageBus;
     private $albumRepository;
     private $galleryDirectory;
+    private HubInterface $hub;
 
-    public function __construct(MessageBusInterface $messageBus, AlbumRepository $albumRepository, $galleryDirectory)
+    public function __construct(HubInterface $hub, AlbumRepository $albumRepository, $galleryDirectory)
     {
-        $this->messageBus = $messageBus;
         $this->albumRepository = $albumRepository;
         $this->galleryDirectory = $galleryDirectory;
+        $this->hub = $hub;
     }
 
     #[Route('/gallery', name: 'gallery')]
@@ -39,7 +39,7 @@ class GalleryController extends AbstractController
 
     #[Route('/gallery/upload', name: 'gallery_upload')]
     #[IsGranted('ROLE_USER')]
-    public function upload(Request $request): Response
+    public function upload(Request $request, UploadFilesHandler $uploadFilesHandler, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(UploadType::class);
         $form->handleRequest($request);
@@ -59,12 +59,7 @@ class GalleryController extends AbstractController
             $dateTaken = $form->get('date_taken')->getData();
             $newAlbumName = $form->get('new_album_name')->getData();
             $userId = $this->getUser()->getId();
-
-            $this->messageBus->dispatch(new UploadMessage($albumId, $filePaths, $dateTaken, $newAlbumName, $userId));
-
-            $this->addFlash('success', 'Fichier(s) uploadé(s) avec succès. Le traitement se fera en arrière-plan.');
-
-            return $this->redirectToRoute('gallery');
+            $uploadFilesHandler->upload($albumId, $filePaths, $dateTaken, $newAlbumName, $userId);
         }
 
         return $this->render('upload/index.html.twig', [

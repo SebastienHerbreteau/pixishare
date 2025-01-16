@@ -1,28 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ma galerie{% endblock %}
+{% block title %}
+    Pixishare - Ma galerie
+{% endblock %}
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('gallery_css') }}
+    {{ encore_entry_link_tags('uploadModal_css') }}
 {% endblock %}
 
 {% block body %}
-
-    {% for message in app.flashes('error') %}
-        <div class="alert alert-danger">
-            {{ message }}
-        </div>
-    {% endfor %}
-
-    <div class="content">
+    <div class="upload-modal">
+    </div>
+    <div class="content-gallery">
         {% for album in albums %}
             <div class="album">
-                <h2>{{ album.name | capitalize }}</h2>
-                <p>{{ album.description }}</p>
+                <div class="filter"></div>
+                <div class="info-album">
+                    <h5 class="album-name">{{ album.name | capitalize }}</h5>
+                    <p class="photos-count">{{ album.photos | length }}{% if  album.photos | length > 1 %} photos {% else %} photo {% endif %}</p>
+                </div>
                 <div class="container-album">
                     <a href="{{ path('album', { 'id': album.id }) }}">
                         {% if album.cover.filepath is defined %}
-                            <img src="{{ asset(album.cover.filepath) }}">
+                            <img class="thumbnail" src="{{ asset(album.cover.thumbnail) }}">
                         {% else %}
                             <img class="gallery-icon" src="{{ asset('images/galerie.png') }}">
                         {% endif %}
@@ -30,12 +31,29 @@
                 </div>
             </div>
         {% endfor %}
-        <div class="album">
-            <a class="container-photo container-plus upload" href="{{ path('gallery_upload') }}">
-                <img class="plus" src="{{ asset('images/plus.png') }}" alt="plus icon">
-            </a>
-        </div>
     </div>
-
 {% endblock %}
 
+{% block javascripts %}
+    <script>
+        const eventSource = new EventSource("{{ mercure('/images')|escape('js') }}");
+        eventSource.onmessage = event => {
+            let total = JSON.parse(event.data)['total']
+            let item = JSON.parse(event.data)['item']
+            let progressBar = document.querySelector('.progress-bar');
+            const percentage = (item / total) * 100;
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = Math.round(percentage) + '%';
+            if (total === item) {
+                let progressContainer = document.querySelector('.container-progress');
+                let uploadModal = document.querySelector('.upload-modal');
+                setTimeout(function () {
+                    progressContainer.style.display = 'none';
+                    uploadModal.style.display = 'none';
+                    location.reload();
+                }, 1000)
+            }
+        }
+    </script>
+    {{ encore_entry_script_tags('gallery_js') }}
+{% endblock %}
