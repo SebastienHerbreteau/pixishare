@@ -16,11 +16,9 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class GalleryController extends AbstractController
 {
-    private $messageBus;
     private $albumRepository;
     private $galleryDirectory;
     private HubInterface $hub;
-    private EntityManagerInterface $em;
 
     public function __construct(HubInterface $hub, AlbumRepository $albumRepository, $galleryDirectory)
     {
@@ -62,7 +60,6 @@ class GalleryController extends AbstractController
             $newAlbumName = $form->get('new_album_name')->getData();
             $userId = $this->getUser()->getId();
             $uploadFilesHandler->upload($albumId, $filePaths, $dateTaken, $newAlbumName, $userId);
-
         }
 
         return $this->render('upload/index.html.twig', [

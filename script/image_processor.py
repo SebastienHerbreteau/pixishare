@@ -1,6 +1,5 @@
 from PIL import Image
 import sys
-import os
 
 def process_image(input_path, output_path, thumbnail_path, target_size):
     try:

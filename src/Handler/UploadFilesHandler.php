@@ -121,12 +121,12 @@ class UploadFilesHandler
 //Suppression du fichier temporaire
         unlink($filePath);
 
-
         if(!$album->getCover()){
             $album->setCover($photo);
             $this->em->persist($album);
             $this->em->flush();
         }
+
         return true;
     }
 }
