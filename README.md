@@ -29,7 +29,7 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
 
 ## Fonctionnalités en cours de développement
 
-- Notifications en temps réel avec **Mercure** (SSE).
+
 
 ---
 
@@ -38,6 +38,7 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
 - PHP 8.4
 - Python 3.13
 - Node.js (pour les dépendances frontend)
+- Docker
 
 ---
 
@@ -87,10 +88,10 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
    npm run build
    ```
 
-8. **Lancer les consumers ** :  
+8. **Lancer le container Docker pour le hub Mercure ** :  
  
    ```bash
-    php bin/console messenger:consume
+    docker-composer up --build
    ```
 
 
