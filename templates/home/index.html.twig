@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PixiShare - Accueil{% endblock %}
+{% block title %}PixiShare - Welcome{% endblock %}
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('home_css') }}
@@ -8,12 +8,7 @@
 
 {% block body %}
     <div class="content">
-        <img class="background" src="{{ asset('images/background.jpg') }}">
-        {% if app.user %}
-            <a href="{{ path('gallery') }}" class="gallery"><img src="{{ asset('images/home/photo.png') }}"> Gallery</a>
-        {% else %}
-            <a href="{{ path('login') }}" class="connection"><img src="{{ asset('images/home/cadenas.png') }}"> Login</a>
-        {% endif %}
+        <img src="{{ asset('images/logo.png') }}">
+        <a href="{% if app.user %}{{ path('gallery') }}{% else %}{{ path('login') }}{% endif %}" class="login"><img src="{{ asset('images/home/login.png') }}"></a>
     </div>
 {% endblock %}
-
