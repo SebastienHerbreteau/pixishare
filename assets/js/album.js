@@ -7,8 +7,8 @@ let modal = document.querySelector('.modal')
 $('.content').justifiedGallery({
     rowHeight : 200,
     lastRow : 'left',
-    margins : 5,
-    border: 150
+    margins : 3,
+    border: 50,
 });
 
 photos.forEach(photo => {

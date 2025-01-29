@@ -13,7 +13,6 @@ plusButton.addEventListener('click', () => {
             let form = document.querySelector('form');
 
             form.addEventListener('submit', e => {
-                console.log(form);
                 e.preventDefault();
                 let progressContainer = document.querySelector('.container-progress');
                 progressContainer.style.display = 'flex';
