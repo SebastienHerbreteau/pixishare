@@ -3,6 +3,7 @@
 {% endblock %}
 
 <div class="header">
+    {% if app.current_route == 'album'%}<a href="{{ path('gallery') }}"><img class="back" src="{{ asset('images/back.png') }}" alt="back icon"></a>{% endif %}
 {% if app.user %}
     <img class="plus" src="{{ asset('images/plus.png') }}" alt="plus icon">
     <a href="{{ path('logout') }}"><img class="logout" src="{{ asset('images/logout.png') }}" alt="logout icon"></a>

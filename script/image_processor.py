@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageFilter
 import sys
 
 def process_image(input_path, output_path, thumbnail_path, target_size):
@@ -23,7 +23,9 @@ def process_image(input_path, output_path, thumbnail_path, target_size):
             thumbnail_height = 300
             thumbnail = resized_img.copy()
             thumbnail.thumbnail((new_width, thumbnail_height), Image.LANCZOS)
-            thumbnail.save(thumbnail_path, "WEBP", quality=80, optimize=True)
+            sharpened_thumbnail = thumbnail.filter(ImageFilter.UnsharpMask(radius=2, percent=50, threshold=1))
+            sharpened_thumbnail.save(thumbnail_path, "WEBP", quality=80, optimize=True)
+
             print("Image traitée avec succès")
     except Exception as e:
         print(f"Erreur lors du traitement de l'image : {e}")
