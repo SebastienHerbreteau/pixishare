@@ -1,4 +1,17 @@
+Page d'accueil
 ![alt text](https://github.com/SebastienHerbreteau/pixishare/blob/master/screenshot.jpg?raw=true)
+
+Page des albums
+![alt text](https://github.com/SebastienHerbreteau/pixishare/blob/master/screenshot2.jpg?raw=true)
+
+Page d'un album
+![alt text](https://github.com/SebastienHerbreteau/pixishare/blob/master/screenshot3.jpg?raw=true)
+
+Modal de traitement/avancement
+![alt text](https://github.com/SebastienHerbreteau/pixishare/blob/master/screenshot4.jpg?raw=true)
+
+Modal photo
+![alt text](https://github.com/SebastienHerbreteau/pixishare/blob/master/screenshot5.jpg?raw=true)
 
 # PixiShare
 
@@ -22,7 +35,7 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
 
 - Upload de photos. (Jpeg, png, bmp)
 - Script Python pour la gestion des images (redimensionnement, compression en webp).
-- Hub Mercure pour l'avancement du traitement des images
+- Hub Mercure pour le traitement asynchrone des images
 - Affichage des galeries justifiées, façon Flickr. (https://miromannino.github.io/Justified-Gallery/)
 
 ---
