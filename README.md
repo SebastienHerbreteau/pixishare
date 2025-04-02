@@ -68,15 +68,18 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
    composer install
    ```
 
-3. **Configurer le fichier d'environnement** :  
+3. **Configurer le fichier d'environnement** :
+      ```bash
+   Installer une base de donnée de votre choix et configurer le fichier .env
+   ```
 
 
-4. **Lancer les migrations pour la base de données** :  
+5. **Lancer les migrations pour la base de données** :  
    ```bash
    php bin/console doctrine:migrations:migrate
    ```
 
-5. **Installer les dépendances JavaScript** :  
+6. **Installer les dépendances JavaScript** :  
    Si tu utilises **npm** :
    ```bash
    npm install
@@ -86,12 +89,12 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
    yarn install
    ```
 
-6. **Installer les dépendances Python nécessaires pour le traitement des images** :  
+7. **Installer les dépendances Python nécessaires pour le traitement des images** :  
    ```bash
    pip install imageio numpy pillow
    ```
 
-7. **Compiler les assets frontend (si nécessaire)** :  
+8. **Compiler les assets frontend (si nécessaire)** :  
    Pour le mode développement :  
    ```bash
    npm run dev
@@ -101,7 +104,7 @@ Personnellement, je le fais tourner sur un client léger Lenovo, équipé d'un R
    npm run build
    ```
 
-8. **Lancer le container Docker pour le hub Mercure ** :  
+9. **Lancer le container Docker pour le hub Mercure ** :  
  
    ```bash
     docker-composer up --build
