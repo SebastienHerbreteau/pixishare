@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Handler;
+namespace App\Service;
 
 use App\Entity\Photo;
 use App\Entity\Album;
@@ -12,7 +12,7 @@ use App\Repository\UserRepository;
 use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
 
-class UploadFilesHandler
+class UploadFilesService
 {
     private EntityManagerInterface $em;
     private string $galleryDirectory;

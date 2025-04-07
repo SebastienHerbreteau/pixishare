@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\SecurityBundle\Security;
 use App\Repository\AlbumRepository;
-use App\Handler\UploadFilesHandler;
+use App\Service\UploadFilesService;
 use Doctrine\ORM\EntityManagerInterface;
 
 class GalleryController extends AbstractController
@@ -39,7 +39,7 @@ class GalleryController extends AbstractController
 
     #[Route('/gallery/upload', name: 'gallery_upload')]
     #[IsGranted('ROLE_USER')]
-    public function upload(Request $request, UploadFilesHandler $uploadFilesHandler, EntityManagerInterface $em): Response
+    public function upload(Request $request, UploadFilesService $uploadFilesService, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(UploadType::class);
         $form->handleRequest($request);
@@ -59,7 +59,7 @@ class GalleryController extends AbstractController
             $dateTaken = $form->get('date_taken')->getData();
             $newAlbumName = $form->get('new_album_name')->getData();
             $userId = $this->getUser()->getId();
-            $uploadFilesHandler->upload($albumId, $filePaths, $dateTaken, $newAlbumName, $userId);
+            $uploadFilesService->upload($albumId, $filePaths, $dateTaken, $newAlbumName, $userId);
         }
 
         return $this->render('upload/index.html.twig', [

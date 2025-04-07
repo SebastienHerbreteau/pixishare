@@ -16,7 +16,7 @@
 </head>
 <body>
 {% block header %}
-    {% if app.current_route != 'home' %}
+    {% if app.current_route != 'home' and app.current_route != 'login' %}
         {% include 'header.html.twig' %}
     {% endif %}
 {% endblock %}
