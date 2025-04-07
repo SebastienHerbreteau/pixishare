@@ -65,15 +65,18 @@ PixiShare permet de visualiser ses photos de manière bien plus agréable que l'
    composer install
    ```
 
-3. **Configurer le fichier d'environnement** :  
+3. **Configurer le fichier d'environnement** :
+      ```bash
+   Installer une base de donnée de votre choix et configurer le fichier .env
+   ```
 
 
-4. **Lancer les migrations pour la base de données** :  
+5. **Lancer les migrations pour la base de données** :  
    ```bash
    php bin/console doctrine:migrations:migrate
    ```
 
-5. **Installer les dépendances JavaScript** :  
+6. **Installer les dépendances JavaScript** :  
    Si tu utilises **npm** :
    ```bash
    npm install
@@ -83,12 +86,12 @@ PixiShare permet de visualiser ses photos de manière bien plus agréable que l'
    yarn install
    ```
 
-6. **Installer les dépendances Python nécessaires pour le traitement des images** :  
+7. **Installer les dépendances Python nécessaires pour le traitement des images** :  
    ```bash
    pip install imageio numpy pillow
    ```
 
-7. **Compiler les assets frontend (si nécessaire)** :  
+8. **Compiler les assets frontend (si nécessaire)** :  
    Pour le mode développement :  
    ```bash
    npm run dev
@@ -98,7 +101,7 @@ PixiShare permet de visualiser ses photos de manière bien plus agréable que l'
    npm run build
    ```
 
-8. **Lancer le container Docker pour le hub Mercure ** :  
+9. **Lancer le container Docker pour le hub Mercure ** :  
  
    ```bash
     docker-composer up --build
