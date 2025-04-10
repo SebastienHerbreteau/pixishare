@@ -17,7 +17,7 @@ class Photo
     private ?string $filePath = null;
 
     #[ORM\ManyToOne(inversedBy: 'photos')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Album $album = null;
 
     #[ORM\ManyToOne(inversedBy: 'photos')]

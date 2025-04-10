@@ -31,7 +31,7 @@ class Album
     /**
      * @var Collection<int, Photo>
      */
-    #[ORM\OneToMany(mappedBy: 'album', targetEntity: Photo::class)]
+    #[ORM\OneToMany(mappedBy: 'album', targetEntity: Photo::class, cascade: ['remove'], orphanRemoval: true)]
     private Collection $photos;
 
     #[ORM\ManyToOne(inversedBy: 'albums')]
@@ -40,8 +40,9 @@ class Album
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_taken = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?photo $cover = null;
+    #[ORM\OneToOne(targetEntity: Photo::class)]
+    #[ORM\JoinColumn(name: 'cover_id', referencedColumnName: 'id', nullable: true, onDelete: 'SET NULL')]
+    private ?Photo $cover = null;
 
     public function __construct()
     {
