@@ -3,8 +3,8 @@
 {% endblock %}
 
 {% block body %}
-    <img class="garbage" src="{{ asset('images/poubelle.png') }}">
-    <img id="photo" data-photo-id="{{ photo.id }}" src="{{ asset(photo.filePath) }}">
+    <a class="delete-link" href="{{ path('deletePhoto', { 'photoId': photo.id }) }}"><img class="delete" src="{{ asset('images/poubelle.png') }}"></a>
+    <img id="photo" src="{{ asset(photo.filePath) }}">
 {% endblock %}
 
 {% block javascripts %}

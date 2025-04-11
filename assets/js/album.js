@@ -11,7 +11,18 @@ $('.content').justifiedGallery({
     margins: 3,
     border: 50,
 });
-
+document.addEventListener('DOMContentLoaded', function () {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach(function (message) {
+        setTimeout(function () {
+            message.style.transition = 'opacity 0.5s ease';
+            message.style.opacity = '0';
+            setTimeout(function () {
+                message.remove();
+            }, 500);
+        }, 3000);
+    });
+});
 photos.forEach(photo => {
     photo.addEventListener('click', function () {
         let id = photo.dataset.id
@@ -26,8 +37,6 @@ photos.forEach(photo => {
                         modal.style.display = 'none'
                     }
                 })
-                console.log(mainPhoto.dataset.photoId)
-
             }))
     })
 })

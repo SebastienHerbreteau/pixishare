@@ -28,3 +28,11 @@ body {
   width: 102%;
   height: 102%;
 }
+
+.div-alert {
+  position: absolute;
+  right: -2%;
+  width: 200px;
+  transform: translate(-50px, -50px);
+  z-index: 3;
+}

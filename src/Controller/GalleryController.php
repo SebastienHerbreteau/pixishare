@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\UploadType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,7 +59,11 @@ class GalleryController extends AbstractController
             $albumId = $form->get('album_name')->getData() ? $form->get('album_name')->getData()->getId() : null;
             $dateTaken = $form->get('date_taken')->getData();
             $newAlbumName = $form->get('new_album_name')->getData();
-            $userId = $this->getUser()->getId();
+
+            /** @var User $user */
+            $user = $this->getUser();
+
+            $userId = $user->getId();
             $uploadFilesService->upload($albumId, $filePaths, $dateTaken, $newAlbumName, $userId);
         }
 
