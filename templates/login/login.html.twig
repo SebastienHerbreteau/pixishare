@@ -8,10 +8,6 @@
 
 {% block body %}
 
-    <a href="{{ path('home') }}">
-        <img class="arrow-left" src="{{ asset('images/login/arrow-left.png') }}">
-    </a>
-
     <div class="content">
         <form method="post">
             {% if error %}
@@ -28,7 +24,7 @@
                     <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="off" required autofocus>
                 </div>
                 <div class="input-container">
-                    <label for="password">Password</label>
+                    <label for="password">Mot de passe</label>
                     <input type="password" name="_password" id="password" class="form-control" autocomplete="off" required>
                 </div>
                 <input type="hidden" name="_csrf_token"
@@ -36,7 +32,7 @@
                 >
                 <div class="button-container">
                     <button class="button" type="submit">
-                        Sign in
+                        Connexion
                     </button>
 {#                    <p>Or</p>#}
 {#                    <a class="button" href="{{ path('register') }}">#}
