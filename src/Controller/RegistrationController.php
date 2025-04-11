@@ -16,43 +16,43 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
-    {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // generate a signed url and email it to the user
-//            $this->emailVerifier->sendEmailConfirmation('verify_email', $user,
-//                (new TemplatedEmail())
-//                    ->from(new Address('contact@pixishare.sebastienherbreteau.com', 'PixiShare'))
-//                    ->to($user->getEmail())
-//                    ->subject('Please Confirm your Email')
-//                    ->htmlTemplate('registration/confirmation_email.html.twig')
+//    #[Route('/register', name: 'register')]
+//    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+//    {
+//        $user = new User();
+//        $form = $this->createForm(RegistrationFormType::class, $user);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            // encode the plain password
+//            $user->setPassword(
+//                $userPasswordHasher->hashPassword(
+//                    $user,
+//                    $form->get('plainPassword')->getData()
+//                )
 //            );
-
-            // do anything else you need here, like send an email
-
-            return $this->redirectToRoute('gallery');
-        }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
-        ]);
-    }
+//
+//            $entityManager->persist($user);
+//            $entityManager->flush();
+//
+//            // generate a signed url and email it to the user
+////            $this->emailVerifier->sendEmailConfirmation('verify_email', $user,
+////                (new TemplatedEmail())
+////                    ->from(new Address('contact@pixishare.sebastienherbreteau.com', 'PixiShare'))
+////                    ->to($user->getEmail())
+////                    ->subject('Please Confirm your Email')
+////                    ->htmlTemplate('registration/confirmation_email.html.twig')
+////            );
+//
+//            // do anything else you need here, like send an email
+//
+//            return $this->redirectToRoute('gallery');
+//        }
+//
+//        return $this->render('registration/register.html.twig', [
+//            'registrationForm' => $form,
+//        ]);
+//    }
 
     #[Route('/verify/email', name: 'verify_email')]
     public function verifyUserEmail(Request $request, UserRepository $userRepository, TranslatorInterface $translator): Response
