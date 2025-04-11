@@ -1,15 +1,14 @@
 let plusButton = document.querySelector('.plus');
-// let modal = document.querySelector('.upload-modal');
-// modal.addEventListener('click', e => {
-//     modal.style.display = 'none';
-// })
+let containerModal = document.querySelector('.container-modal');
+let uploadModal = document.querySelector('.upload-modal');
+
 plusButton.addEventListener('click', () => {
     fetch('/gallery/upload')
         .then(res => res.text())
         .then(data => {
-            let uploadModal = document.querySelector('.upload-modal');
             uploadModal.innerHTML = data;
             uploadModal.style.display = 'block';
+            containerModal.style.display = 'block';
             let form = document.querySelector('form');
 
             form.addEventListener('submit', e => {
@@ -22,6 +21,10 @@ plusButton.addEventListener('click', () => {
                     method: 'POST',
                     body: formData
                 })
+            })
+            let closeButton = document.querySelector('.close');
+            closeButton.addEventListener('click', e => {
+                containerModal.style.display = 'none';
             })
         })
 })

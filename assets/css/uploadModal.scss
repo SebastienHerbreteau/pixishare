@@ -63,8 +63,7 @@ form {
 }
 
 label {
-  text-decoration: underline;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 #upload_date_taken {
@@ -74,4 +73,13 @@ label {
 #upload_submit {
 border: none;
   background: white;
+}
+
+.close {
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 5%;
+  right: 0;
+  width: 30px;
+  cursor: pointer;
 }
