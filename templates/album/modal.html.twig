@@ -3,7 +3,8 @@
 {% endblock %}
 
 {% block body %}
-    <img id="photo-modal" src="{{ asset(photo.filePath) }}">
+    <img class="garbage" src="{{ asset('images/poubelle.png') }}">
+    <img id="photo" data-photo-id="{{ photo.id }}" src="{{ asset(photo.filePath) }}">
 {% endblock %}
 
 {% block javascripts %}

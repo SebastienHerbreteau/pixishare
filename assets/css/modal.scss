@@ -1,3 +1,12 @@
-#photo-modal {
-  height: 90%;
+#photo {
+  max-height: 85%;
+  max-width: 90%;
+}
+
+.garbage {
+  width: 30px;
+  cursor: pointer;
+  position:absolute;
+  top: 3%;
+  z-index: 2;
 }
